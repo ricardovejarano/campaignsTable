@@ -3,56 +3,56 @@
         "id": 1,
         "started_at": "2017-06-26",
         "finished_at": "2017-10-01",
-        "channel": "Tv Nacional↵",
+        "channel": "Tv Nacional",
         "description": "CORRALAZOS 20''↵"
     },
     {
         "id": 2,
         "started_at": "2017-07-03",
         "finished_at": "2017-07-30",
-        "channel": "Tv Cable↵",
+        "channel": "Tv Cable",
         "description": "CORRALAZOS 20''↵"
     },
     {
         "id": 3,
         "started_at": "2017-08-07",
         "finished_at": "2017-10-19",
-        "channel": "Tv Cable↵",
+        "channel": "Tv Cable",
         "description": "CORRALAZOS 20''↵"
     },
     {
         "id": 4,
         "started_at": "2017-02-13",
         "finished_at": "2017-02-26",
-        "channel": "Radio Olimpica Bquilla↵",
+        "channel": "Radio Olimpica Bquilla",
         "description": null
     },
     {
         "id": 5,
         "started_at": "2017-05-08",
         "finished_at": "2017-06-11",
-        "channel": "Radio Olimpica Bquilla↵",
+        "channel": "Radio Olimpica Bquilla",
         "description": null
     },
     {
         "id": 6,
         "started_at": "2017-07-31",
         "finished_at": "2017-10-29",
-        "channel": "Radio↵",
+        "channel": "Radio",
         "description": null
     },
     {
         "id": 7,
         "started_at": "2017-02-13",
         "finished_at": "2017-04-16",
-        "channel": "Digital↵",
+        "channel": "Digital",
         "description": "CORRALAZOS"
     },
     {
         "id": 8,
         "started_at": "2017-07-24",
         "finished_at": "2017-11-16",
-        "channel": "Digital↵",
+        "channel": "Digital",
         "description": null
     },
     {
@@ -80,7 +80,7 @@
         "id": 12,
         "started_at": "2017-07-17",
         "finished_at": "2017-10-01",
-        "channel": "P. Exterior↵",
+        "channel": "P. Exterior",
         "description": null
     },
     {
@@ -94,14 +94,14 @@
         "id": 14,
         "started_at": "2017-02-06",
         "finished_at": "2017-02-12",
-        "channel": "Producción↵",
+        "channel": "Producción",
         "description": null
     },
     {
         "id": 15,
         "started_at": "2017-05-01",
         "finished_at": "2017-05-07",
-        "channel": "Producción↵",
+        "channel": "Producción",
         "description": null
     },
     {
@@ -115,98 +115,98 @@
         "id": 17,
         "started_at": "2017-07-31",
         "finished_at": "2017-08-06",
-        "channel": "Producción↵",
+        "channel": "Producción",
         "description": null
     },
     {
         "id": 18,
         "started_at": "2017-10-30",
         "finished_at": "2017-11-05",
-        "channel": "Producción↵",
+        "channel": "Producción",
         "description": null
     },
     {
         "id": 20,
         "started_at": "2018-06-06",
         "finished_at": "2018-09-02",
-        "channel": "Radio↵",
+        "channel": "Radio",
         "description": "FESTIVAL DE MALTEADAS"
     },
     {
         "id": 21,
         "started_at": "2018-01-22",
         "finished_at": "2018-02-11",
-        "channel": "Digital↵",
+        "channel": "Digital",
         "description": "ANIVERSARIO↵"
     },
     {
         "id": 22,
         "started_at": "2018-06-04",
         "finished_at": "2018-09-02",
-        "channel": "Digital↵",
+        "channel": "Digital",
         "description": "FESTIVAL DE MALTEADAS↵"
     },
     {
         "id": 23,
         "started_at": "2019-01-21",
         "finished_at": "2019-02-03",
-        "channel": "TV Nacional↵",
+        "channel": "Tv Nacional",
         "description": "20''"
     },
     {
         "id": 24,
         "started_at": "2019-02-04",
         "finished_at": "2019-03-31",
-        "channel": "TV↵",
+        "channel": "TV",
         "description": "Corralazos 3x20"
     },
     {
         "id": 25,
         "started_at": "2019-04-29",
         "finished_at": "2019-06-02",
-        "channel": "TV↵",
+        "channel": "TV",
         "description": "Corralazos 3x20"
     },
     {
         "id": 26,
         "started_at": "2019-06-17",
         "finished_at": "2019-08-18",
-        "channel": "TV↵",
+        "channel": "TV",
         "description": "Legendaria 3 x 20"
     },
     {
         "id": 27,
         "started_at": "2019-09-02",
         "finished_at": "2019-10-13",
-        "channel": "TV↵",
+        "channel": "TV",
         "description": "Corralazos 3x20"
     },
     {
         "id": 28,
         "started_at": "2019-11-18",
         "finished_at": "2019-12-15",
-        "channel": "TV↵",
+        "channel": "TV",
         "description": "Legendaria 3 x 20"
     },
     {
         "id": 29,
         "started_at": "2019-02-04",
         "finished_at": "2019-03-31",
-        "channel": "TV Cable↵",
+        "channel": "Tv Cable",
         "description": "Corralazos 25"
     },
     {
         "id": 30,
         "started_at": "2019-04-29",
         "finished_at": "2019-06-02",
-        "channel": "TV Cable↵",
+        "channel": "Tv Cable",
         "description": "Corralazos 25"
     },
     {
         "id": 31,
         "started_at": "2019-06-17",
         "finished_at": "2019-08-18",
-        "channel": "TV Cable↵",
+        "channel": "Tv Cable",
         "description": "Legendaria 3 x 25"
     },
     {
@@ -220,154 +220,154 @@
         "id": 33,
         "started_at": "2019-11-18",
         "finished_at": "2019-12-15",
-        "channel": "TV Cable↵",
+        "channel": "Tv Cable",
         "description": "Legendaria 3 x 25"
     },
     {
         "id": 19,
         "started_at": "2018-02-05",
         "finished_at": "2018-02-11",
-        "channel": "Radio↵",
+        "channel": "Radio",
         "description": "ANIVERSARIO"
     },
     {
         "id": 34,
         "started_at": "2019-02-04",
         "finished_at": "2019-03-31",
-        "channel": "Video Digital↵",
+        "channel": "Video Digital",
         "description": "Corralazos 3x15"
     },
     {
         "id": 35,
         "started_at": "2019-03-29",
         "finished_at": "2019-06-02",
-        "channel": "Video Digital↵",
+        "channel": "Video Digital",
         "description": "Corralazos 3x15"
     },
     {
         "id": 36,
         "started_at": "2019-06-17",
         "finished_at": "2019-08-18",
-        "channel": "Video Digital↵",
+        "channel": "Video Digital",
         "description": "Legendaria 3 x 20"
     },
     {
         "id": 37,
         "started_at": "2019-09-02",
         "finished_at": "2019-11-03",
-        "channel": "Video Digital↵",
+        "channel": "Video Digital",
         "description": "Corralazos 3x20"
     },
     {
         "id": 38,
         "started_at": "2019-11-18",
         "finished_at": "2019-12-15",
-        "channel": "Video Digital↵",
+        "channel": "Video Digital",
         "description": "Legendaria 3 x 20"
     },
     {
         "id": 39,
         "started_at": "2019-02-04",
         "finished_at": "2019-03-03",
-        "channel": "Radio↵",
+        "channel": "Radio",
         "description": "Corralazos - 20"
     },
     {
         "id": 40,
         "started_at": "2019-09-02",
         "finished_at": "2019-09-29",
-        "channel": "Radio↵",
+        "channel": "Radio",
         "description": "Corralazos - 20"
     },
     {
         "id": 41,
         "started_at": "2019-02-04",
         "finished_at": "2019-06-02",
-        "channel": "Digital↵",
+        "channel": "Digital",
         "description": "Corralazos"
     },
     {
         "id": 42,
         "started_at": "2019-06-03",
         "finished_at": "2019-08-18",
-        "channel": "Digital↵",
+        "channel": "Digital",
         "description": "Legendaria"
     },
     {
         "id": 43,
         "started_at": "2019-08-19",
         "finished_at": "2019-11-17",
-        "channel": "Digital↵",
+        "channel": "Digital",
         "description": "Corralazos ↵"
     },
     {
         "id": 44,
         "started_at": "2019-11-18",
         "finished_at": "2019-12-29",
-        "channel": "Digital↵",
+        "channel": "Digital",
         "description": "Legendaria↵"
     },
     {
         "id": 45,
         "started_at": "2019-02-04",
         "finished_at": "2019-02-17",
-        "channel": "P. Exterior↵",
+        "channel": "P. Exterior",
         "description": null
     },
     {
         "id": 46,
         "started_at": "2019-03-04",
         "finished_at": "2019-03-17",
-        "channel": "P. Exterior↵",
+        "channel": "P. Exterior",
         "description": null
     },
     {
         "id": 47,
         "started_at": "2019-07-29",
         "finished_at": "2019-08-11",
-        "channel": "P. Exterior↵",
+        "channel": "P. Exterior",
         "description": null
     },
     {
         "id": 48,
         "started_at": "2019-09-30",
         "finished_at": "2019-10-13",
-        "channel": "P. Exterior↵",
+        "channel": "P. Exterior",
         "description": null
     },
     {
         "id": 49,
         "started_at": "2019-12-02",
         "finished_at": "2019-12-15",
-        "channel": "P. Exterior↵",
+        "channel": "P. Exterior",
         "description": null
     },
     {
         "id": 50,
         "started_at": "2019-02-04",
         "finished_at": "2019-02-10",
-        "channel": "Producción↵",
+        "channel": "Producción",
         "description": null
     },
     {
         "id": 51,
         "started_at": "2019-07-29",
         "finished_at": "2019-08-04",
-        "channel": "Producción↵",
+        "channel": "Producción",
         "description": null
     },
     {
         "id": 52,
         "started_at": "2019-09-30",
         "finished_at": "2019-10-06",
-        "channel": "Producción↵",
+        "channel": "Producción",
         "description": null
     },
     {
         "id": 53,
         "started_at": "2019-12-02",
         "finished_at": "2019-12-08",
-        "channel": "Producción↵",
+        "channel": "Producción",
         "description": null
     }
 ]
