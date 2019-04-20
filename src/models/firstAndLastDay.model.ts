@@ -1,4 +1,4 @@
 export class FirstAndLastDay {
-    firstDay: string;
-    lastDay?: string;
+    firstDay: number;
+    lastDay?: number;
 }

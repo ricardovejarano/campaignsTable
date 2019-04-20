@@ -7,3 +7,24 @@
   <option value="" selected disabled hidden>Mes</option>
   <option *ngFor="let m of months" [value]="m.id">{{m.name}}</option>
 </select>
+
+<!--  INICIO sección tabla -->
+<table>
+  <tr>
+    <th>Canal</th>
+    <th *ngFor="let w of firstAndLastDaysArray">
+      <div *ngIf="w.firstDay !== w.lastDay">{{w.firstDay}} a {{w.lastDay}}</div>
+      <div *ngIf="w.firstDay === w.lastDay">{{w.firstDay}}</div>      
+    </th>
+    
+  </tr>
+  <!--
+  <tr>
+    <td>Finn</td>
+    <td>10</td>
+  </tr>
+  -->
+</table>
+
+
+<!--  FIN sección tabla -->

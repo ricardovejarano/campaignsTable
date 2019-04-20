@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
 
   public yearSelected = 2019;
-  public monthSelected = 5;
+  public monthSelected = 4;
   public campaigns: Campaign[];
   public firstAndLastDaysArray: FirstAndLastDay[];
   public years = new Array();
@@ -43,18 +43,20 @@ export class AppComponent implements OnInit {
     this.http.get<Array<Campaign>>('./assets/data/campaign.json')
       .subscribe(res => {
         this.campaigns = res;
-        console.log(this.campaigns);
+        // console.log(this.campaigns);
       });
   }
 
   selectYear(year: number) {
     this.yearSelected = year;
-    // this.buildTable();
+    this.firstAndLastDaysArray = new Array<FirstAndLastDay>();
+    this.buildTable();
   }
 
   selectMonth(month: number) {
     this.monthSelected = month;
-    // this.buildTable();
+    this.firstAndLastDaysArray = new Array<FirstAndLastDay>();
+    this.buildTable();
   }
 
   buildTable() {
@@ -62,23 +64,45 @@ export class AppComponent implements OnInit {
     const totalDaysInsMonth = this.daysInMonth(this.monthSelected, this.yearSelected);
     const firstDayInMonth = new Date(this.yearSelected + '-' + this.monthSelected + '-' + 1).getDay();
     // Primer semana
-    const firstLast: FirstAndLastDay = new FirstAndLastDay();
-    firstLast.firstDay = 1;
-    if (firstDayInMonth !== 6) {
-      firstLast.lastDay = 1 + (6 - firstDayInMonth);
-    } else {
-      firstLast.lastDay = firstLast.firstDay;
+    const firstWeek: FirstAndLastDay = new FirstAndLastDay();
+    firstWeek.firstDay = 1;
+
+    firstWeek.lastDay = firstDayInMonth !== 6 ? 1 + (6 - firstDayInMonth) : firstWeek.firstDay;
+    this.firstAndLastDaysArray.push(firstWeek);
+    // console.log(this.firstAndLastDaysArray);
+
+    // Ahora se determinan cuantas semanas faltan para terminar el mes
+    const missDays = totalDaysInsMonth - firstWeek.lastDay;
+
+    let weeks = Math.floor((missDays / 7));
+    weeks = missDays % 7 === 0 ? weeks : weeks + 1;
+    let temporalLastDay = firstWeek.lastDay;
+
+    for (let x = 0; x < weeks; x++) {
+      const tempForArray: FirstAndLastDay = new FirstAndLastDay();
+      if (x !== weeks - 1) {
+        tempForArray.firstDay = temporalLastDay + 1;
+        tempForArray.lastDay = temporalLastDay + 7;
+        this.firstAndLastDaysArray.push(tempForArray);
+        temporalLastDay = tempForArray.lastDay;
+      } else {
+        // calcular cuantos díás faltan
+        const daysToEnd = totalDaysInsMonth - temporalLastDay;
+        if (daysToEnd !== 1) {
+          tempForArray.firstDay = temporalLastDay + 1;
+          tempForArray.lastDay = temporalLastDay + daysToEnd;
+        } else {
+          tempForArray.firstDay = temporalLastDay + 1;
+          tempForArray.lastDay = temporalLastDay + 1;
+        }
+        this.firstAndLastDaysArray.push(tempForArray);
+      }
+
     }
-    this.firstAndLastDaysArray.push(firstLast);
     console.log(this.firstAndLastDaysArray);
-
   }
 
-  buildWeeks(firstDay) {
-    for (let x = firstDay; x <= 6; x++) {
 
-    }
-  }
 
   daysInMonth(month, year) {
     return new Date(year, month, 0).getDate();
