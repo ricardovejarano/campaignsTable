@@ -10,19 +10,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
-  // Declaración de los Array de canales
-  public tvNacional = new Array();
-  public radioOlimpicaBquilla = new Array();
-  public radio = new Array();
-  public digital = new Array();
-  public pExteriorCCGranEstación = new Array();
-  public pExteriorParaderosCorralazos = new Array();
-  public pExterior = new Array();
-  public produccion = new Array();
-  public tv = new Array();
-  public tvCable = new Array();
-  public videoDigital = new Array();
-
   public yearSelected = 2019;
   public monthSelected = 4;
   public totalDaysInsMonth = 0;
