@@ -122,7 +122,7 @@ export class AppComponent implements OnInit {
   objectsInRangeDate(finishDay) {
     const initDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + 1).getTime();
     const finishDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + finishDay).getTime();
-    console.log(initDate, finishDate);
+    // console.log(initDate, finishDate);
     for (let x = 0; x < this.campaigns.length; x++) {
       const initTemporalDate = new Date(this.campaigns[x].started_at).getTime();
       const finishTemporalDate = new Date(this.campaigns[x].finished_at).getTime();
@@ -137,7 +137,7 @@ export class AppComponent implements OnInit {
       obj.weeks = new Array();
     });
 
-    console.log('CAMPAÑAS DEL MES', this.campaignsFill);
+    // console.log('CAMPAÑAS DEL MES', this.campaignsFill);
     this.filtterByCampaign();
   }
 
@@ -158,8 +158,9 @@ export class AppComponent implements OnInit {
 
   calcaulateInterceptDateRanges(start1: number, finish1: number, start2: number, finish2: number) {
     const one_day = 1000 * 60 * 60 * 24;
+    start2 = start2 + one_day;
+    finish2 = finish2 + one_day;
     let isInRange = false;
-
     if (start1 !== finish1) {
       for (let i = start1; i <= finish1; i = i + one_day) {
         for (let x = start2; x <= finish2; x = x + one_day) {
@@ -173,8 +174,8 @@ export class AppComponent implements OnInit {
       if (start1 >= start2 && start1 <= finish2) {
         isInRange = true;
       }
-
-
+    } else if (finish2 === start1) {
+      window.alert('IGUAL');
     }
     return isInRange;
   }
