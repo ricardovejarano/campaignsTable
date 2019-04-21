@@ -114,7 +114,7 @@ export class AppComponent implements OnInit {
         this.firstAndLastDaysArray.push(tempForArray);
       }
     }
-    this.objectsInRangeDate(this.totalDaysInsMonth);
+    // this.objectsInRangeDate(this.totalDaysInsMonth);
     console.log(this.firstAndLastDaysArray);
   }
 
@@ -132,22 +132,42 @@ export class AppComponent implements OnInit {
         this.campaignsFill.push(this.campaigns[x]);
       }
     }
+
+    this.campaignsFill.forEach(obj => {
+      obj.weeks = new Array();
+    });
+
     console.log('CAMPAÑAS DEL MES', this.campaignsFill);
     this.filtterByCampaign();
   }
 
   filtterByCampaign() {
     for (let x = 0; x < this.firstAndLastDaysArray.length; x++) {
-      const initDate = new Date(this.firstAndLastDaysArray[x].firstDay).getTime();
-      const finishDate = new Date(this.firstAndLastDaysArray[x].lastDay).getTime();
+      const initDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + this.firstAndLastDaysArray[x].firstDay).getTime();
+      const finishDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' +  this.firstAndLastDaysArray[x].lastDay).getTime();
       this.campaignsFill.forEach(obj => {
-        if (initDate <= new Date(obj.started_at).getTime()) {
-
-        }
-        console.log('en each', obj);
+        const initDate2 = new Date(obj.started_at).getTime();
+        const finishDate2 = new Date(obj.finished_at).getTime();
+        const isInrange = this.calcaulateInterceptDateRanges(initDate, finishDate, initDate2, finishDate2);
+        obj.weeks.push(isInrange);
       });
-
     }
+    console.log(this.campaignsFill);
+  }
+
+
+  calcaulateInterceptDateRanges(start1: number, finish1: number, start2: number, finish2: number) {
+    const one_day = 1000 * 60 * 60 * 24;
+    let isInRange = false;
+    for (let i = start1; i <= finish1; i = i + one_day) {
+      for (let x = start2; x <= finish2; x = x + one_day) {
+        if (x >= start1 && x <= finish1) {
+          isInRange = true;
+        }
+      }
+    }
+
+    return isInRange;
   }
 
 

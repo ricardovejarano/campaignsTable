@@ -4,4 +4,5 @@ export class Campaign {
     finished_at?: string;
     channel?: string;
     description?: string;
+    weeks?: Array<any>;
 }
