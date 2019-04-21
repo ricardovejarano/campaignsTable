@@ -158,8 +158,8 @@ export class AppComponent implements OnInit {
 
   calcaulateInterceptDateRanges(start1: number, finish1: number, start2: number, finish2: number) {
     const one_day = 1000 * 60 * 60 * 24;
-    start2 = start2 + one_day;
-    finish2 = finish2 + one_day;
+    start2 = start2 + one_day;      // ******
+    finish2 = finish2 + one_day;    // ******
     let isInRange = false;
     if (start1 !== finish1) {
       for (let i = start1; i <= finish1; i = i + one_day) {
