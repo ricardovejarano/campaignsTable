@@ -10,9 +10,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
+  // Declaración de los Array de canales
+  public tvNacional = new Array();
+  public radioOlimpicaBquilla = new Array();
+  public radio = new Array();
+  public digital = new Array();
+  public pExteriorCCGranEstación = new Array();
+  public pExteriorParaderosCorralazos = new Array();
+  public pExterior = new Array();
+  public produccion = new Array();
+  public tv = new Array();
+  public tvCable = new Array();
+  public videoDigital = new Array();
+
   public yearSelected = 2019;
   public monthSelected = 4;
+  public totalDaysInsMonth = 0;
   public campaigns: Campaign[];
+  public campaignsFill: Campaign[];
   public firstAndLastDaysArray: FirstAndLastDay[];
   public years = new Array();
   public months = [
@@ -24,6 +39,7 @@ export class AppComponent implements OnInit {
 
   constructor(public http: HttpClient) {
     this.campaigns = new Array<Campaign>();
+    this.campaignsFill = new Array<Campaign>();
     this.firstAndLastDaysArray = new Array<FirstAndLastDay>();
   }
 
@@ -43,37 +59,37 @@ export class AppComponent implements OnInit {
     this.http.get<Array<Campaign>>('./assets/data/campaign.json')
       .subscribe(res => {
         this.campaigns = res;
-        // console.log(this.campaigns);
+        this.objectsInRangeDate(this.totalDaysInsMonth);
       });
   }
 
   selectYear(year: number) {
     this.yearSelected = year;
     this.firstAndLastDaysArray = new Array<FirstAndLastDay>();
+    this.campaignsFill = new Array<Campaign>();
     this.buildTable();
   }
 
   selectMonth(month: number) {
     this.monthSelected = month;
     this.firstAndLastDaysArray = new Array<FirstAndLastDay>();
+    this.campaignsFill = new Array<Campaign>();
     this.buildTable();
   }
 
   buildTable() {
     // totalDaysInsMonth guarda la cantidad de días que tiene un mes
-    const totalDaysInsMonth = this.daysInMonth(this.monthSelected, this.yearSelected);
+    this.totalDaysInsMonth = this.daysInMonth(this.monthSelected, this.yearSelected);
     const firstDayInMonth = new Date(this.yearSelected + '-' + this.monthSelected + '-' + 1).getDay();
+
     // Primer semana
     const firstWeek: FirstAndLastDay = new FirstAndLastDay();
     firstWeek.firstDay = 1;
-
     firstWeek.lastDay = firstDayInMonth !== 6 ? 1 + (6 - firstDayInMonth) : firstWeek.firstDay;
     this.firstAndLastDaysArray.push(firstWeek);
-    // console.log(this.firstAndLastDaysArray);
 
     // Ahora se determinan cuantas semanas faltan para terminar el mes
-    const missDays = totalDaysInsMonth - firstWeek.lastDay;
-
+    const missDays = this.totalDaysInsMonth - firstWeek.lastDay;
     let weeks = Math.floor((missDays / 7));
     weeks = missDays % 7 === 0 ? weeks : weeks + 1;
     let temporalLastDay = firstWeek.lastDay;
@@ -87,7 +103,7 @@ export class AppComponent implements OnInit {
         temporalLastDay = tempForArray.lastDay;
       } else {
         // calcular cuantos díás faltan
-        const daysToEnd = totalDaysInsMonth - temporalLastDay;
+        const daysToEnd = this.totalDaysInsMonth - temporalLastDay;
         if (daysToEnd !== 1) {
           tempForArray.firstDay = temporalLastDay + 1;
           tempForArray.lastDay = temporalLastDay + daysToEnd;
@@ -97,11 +113,27 @@ export class AppComponent implements OnInit {
         }
         this.firstAndLastDaysArray.push(tempForArray);
       }
-
     }
+    this.objectsInRangeDate(this.totalDaysInsMonth);
     console.log(this.firstAndLastDaysArray);
   }
 
+  // Determinar los objetos que estan en el mes seleccionado
+  objectsInRangeDate(finishDay) {
+    const initDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + 1).getTime();
+    const finishDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + finishDay).getTime();
+    console.log(initDate, finishDate);
+    for (let x = 0; x < this.campaigns.length; x++) {
+      const initTemporalDate = new Date(this.campaigns[x].started_at).getTime();
+      const finishTemporalDate = new Date(this.campaigns[x].finished_at).getTime();
+      if (initTemporalDate > initDate && initTemporalDate < finishDate) {
+        this.campaignsFill.push(this.campaigns[x]);
+      } else if (finishTemporalDate > initDate && finishTemporalDate < finishDate) {
+        this.campaignsFill.push(this.campaigns[x]);
+      }
+    }
+    console.log('CAMPAÑAS DEL MES', this.campaignsFill);
+  }
 
 
   daysInMonth(month, year) {

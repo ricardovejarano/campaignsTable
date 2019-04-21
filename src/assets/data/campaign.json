@@ -59,21 +59,21 @@
         "id": 9,
         "started_at": "2017-01-30",
         "finished_at": "2017-02-05",
-        "channel": "P. Exterior CC Gran Estación↵",
+        "channel": "P. Exterior CC Gran Estación",
         "description": null
     },
     {
         "id": 10,
         "started_at": "2017-02-13",
         "finished_at": "2017-03-12",
-        "channel": "P. Exterior Paraderos Corralazos↵",
+        "channel": "P. Exterior Paraderos Corralazos",
         "description": null
     },
     {
         "id": 11,
         "started_at": "2017-05-08",
         "finished_at": "2017-06-04",
-        "channel": "P. Exterior Paraderos Corralazos↵",
+        "channel": "P. Exterior Paraderos Corralazos",
         "description": null
     },
     {
