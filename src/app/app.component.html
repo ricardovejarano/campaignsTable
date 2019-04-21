@@ -9,7 +9,7 @@
 </select>
 
 <!--  INICIO sección tabla -->
-<table>
+<table *ngIf="campaignsFill.length > 0">
   <tr>
     <th>Canal</th>
     <th *ngFor="let w of firstAndLastDaysArray">
@@ -22,6 +22,8 @@
     <td [ngClass]="campaigns.weeks[i] === true ? 'isTrue' : 'isFalse'"  *ngFor="let w of firstAndLastDaysArray ; let i = index"></td>
   </tr>
 </table>
+
+<h1 *ngIf="campaignsFill.length === 0">No hay datos para la fecha seleccionada</h1>
 
 
 <!--  FIN sección tabla -->
