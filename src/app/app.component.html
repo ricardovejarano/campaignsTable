@@ -19,7 +19,7 @@
   </tr>
   <tr *ngFor="let campaigns of campaignsFill">
     <td>{{campaigns.channel}}</td>
-    <td *ngFor="let w of firstAndLastDaysArray ; let i = index">{{campaigns.weeks[i]}}</td>
+    <td [ngClass]="campaigns.weeks[i] === true ? 'isTrue' : 'isFalse'"  *ngFor="let w of firstAndLastDaysArray ; let i = index"></td>
   </tr>
 </table>
 
