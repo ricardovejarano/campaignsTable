@@ -17,7 +17,7 @@
       <div *ngIf="w.firstDay === w.lastDay">{{w.firstDay}}</div>
     </th>
   </tr>
-  <tr *ngFor="let campaigns of campaignsFill">
+  <tr *ngFor="let campaigns of campaignsFill ; let j = index;" [tooltip]="campaignsFill[j].description" placement="top" show-delay="500">
     <td>{{campaigns.channel}}</td>
     <td [ngClass]="campaigns.weeks[i] === true ? 'isTrue' : 'isFalse'"  *ngFor="let w of firstAndLastDaysArray ; let i = index"></td>
   </tr>
