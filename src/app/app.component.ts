@@ -141,8 +141,12 @@ export class AppComponent implements OnInit {
       const initDate = new Date(this.firstAndLastDaysArray[x].firstDay).getTime();
       const finishDate = new Date(this.firstAndLastDaysArray[x].lastDay).getTime();
       this.campaignsFill.forEach(obj => {
+        if (initDate <= new Date(obj.started_at).getTime()) {
+
+        }
         console.log('en each', obj);
       });
+
     }
   }
 
