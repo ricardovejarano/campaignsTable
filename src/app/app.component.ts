@@ -133,6 +133,17 @@ export class AppComponent implements OnInit {
       }
     }
     console.log('CAMPAÑAS DEL MES', this.campaignsFill);
+    this.filtterByCampaign();
+  }
+
+  filtterByCampaign() {
+    for (let x = 0; x < this.firstAndLastDaysArray.length; x++) {
+      const initDate = new Date(this.firstAndLastDaysArray[x].firstDay).getTime();
+      const finishDate = new Date(this.firstAndLastDaysArray[x].lastDay).getTime();
+      this.campaignsFill.forEach(obj => {
+        console.log('en each', obj);
+      });
+    }
   }
 
 
