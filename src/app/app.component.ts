@@ -114,7 +114,7 @@ export class AppComponent implements OnInit {
         this.firstAndLastDaysArray.push(tempForArray);
       }
     }
-    // this.objectsInRangeDate(this.totalDaysInsMonth);
+    this.objectsInRangeDate(this.totalDaysInsMonth);
     console.log(this.firstAndLastDaysArray);
   }
 
@@ -144,7 +144,7 @@ export class AppComponent implements OnInit {
   filtterByCampaign() {
     for (let x = 0; x < this.firstAndLastDaysArray.length; x++) {
       const initDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + this.firstAndLastDaysArray[x].firstDay).getTime();
-      const finishDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' +  this.firstAndLastDaysArray[x].lastDay).getTime();
+      const finishDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + this.firstAndLastDaysArray[x].lastDay).getTime();
       this.campaignsFill.forEach(obj => {
         const initDate2 = new Date(obj.started_at).getTime();
         const finishDate2 = new Date(obj.finished_at).getTime();
@@ -166,7 +166,6 @@ export class AppComponent implements OnInit {
         }
       }
     }
-
     return isInRange;
   }
 

@@ -17,38 +17,9 @@
       <div *ngIf="w.firstDay === w.lastDay">{{w.firstDay}}</div>
     </th>
   </tr>
-  <tr>
-    <td>Tv Nacional</td>
-  </tr>
-  <tr>
-    <td>Radio Olimpica Bquilla</td>
-  </tr>
-  <tr>
-    <td>Radio</td>
-  </tr>
-  <tr>
-    <td>Digital</td>
-  </tr>
-  <tr>
-    <td>P. Exterior CC Gran Estación</td>
-  </tr>
-  <tr>
-    <td>P. Exterior Paraderos Corralazos</td>
-  </tr>
-  <tr>
-    <td>P. Exterior</td>
-  </tr>
-  <tr>
-    <td>Producción</td>
-  </tr>
-  <tr>
-    <td>TV</td>
-  </tr>
-  <tr>
-    <td>Tv Cable</td>
-  </tr>
-  <tr>
-    <td>Video Digital</td>
+  <tr *ngFor="let campaigns of campaignsFill">
+    <td>{{campaigns.channel}}</td>
+    <td *ngFor="let w of firstAndLastDaysArray ; let i = index">{{campaigns.weeks[i]}}</td>
   </tr>
 </table>
 
