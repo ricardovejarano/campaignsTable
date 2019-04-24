@@ -51,14 +51,14 @@ export class AppComponent implements OnInit {
   }
 
   selectYear(year: number) {
-    this.yearSelected = year;
+    this.yearSelected = Number(year);
     this.firstAndLastDaysArray = new Array<FirstAndLastDay>();
     this.campaignsFill = new Array<Campaign>();
     this.buildTable();
   }
 
   selectMonth(month: number) {
-    this.monthSelected = month;
+    this.monthSelected = Number(month);
     this.firstAndLastDaysArray = new Array<FirstAndLastDay>();
     this.campaignsFill = new Array<Campaign>();
     this.buildTable();
@@ -110,17 +110,36 @@ export class AppComponent implements OnInit {
     const initDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + 1).getTime();
     const finishDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + finishDay).getTime();
     // console.log(initDate, finishDate);
+    // console.log('MES', this.monthSelected);
     for (let x = 0; x < this.campaigns.length; x++) {
-      const one_day = 1000 * 60 * 60 * 24;
-      const initTemporalDate = new Date(this.campaigns[x].started_at).getTime() + one_day;
-      const finishTemporalDate = new Date(this.campaigns[x].finished_at).getTime() + one_day;
-      if (initTemporalDate >= initDate && initTemporalDate + one_day <= finishDate) {
+      let initTemporalDate = 0;
+      let finishTemporalDate = 0;
+      initTemporalDate = this.getMili(this.campaigns[x].started_at);
+      finishTemporalDate = this.getMili(this.campaigns[x].finished_at);
+      if (initTemporalDate >= initDate && initTemporalDate <= finishDate) {
         this.campaignsFill.push(this.campaigns[x]);
       } else if (finishTemporalDate >= initDate && finishTemporalDate <= finishDate) {
         this.campaignsFill.push(this.campaigns[x]);
       } else if (initTemporalDate <= initDate && finishTemporalDate >= finishDate) {
         this.campaignsFill.push(this.campaigns[x]);
+      } else if (Number(this.campaigns[x].started_at.split('-')[1]) === this.monthSelected
+        && Number(this.campaigns[x].started_at.split('-')[2]) === finishDay
+        && Number(this.campaigns[x].started_at.split('-')[0]) === this.yearSelected) {
+        this.campaignsFill.push(this.campaigns[x]);
+      } else if (Number(this.campaigns[x].finished_at.split('-')[1]) === this.monthSelected
+        && Number(this.campaigns[x].finished_at.split('-')[2]) === finishDay
+        && Number(this.campaigns[x].finished_at.split('-')[0]) === this.yearSelected) {
+        this.campaignsFill.push(this.campaigns[x]);
+      } else if (Number(this.campaigns[x].started_at.split('-')[1]) === this.monthSelected
+        && Number(this.campaigns[x].started_at.split('-')[2]) === initDate
+        && Number(this.campaigns[x].started_at.split('-')[0]) === this.yearSelected) {
+        this.campaignsFill.push(this.campaigns[x]);
+      } else if (Number(this.campaigns[x].finished_at.split('-')[1]) === this.monthSelected
+        && Number(this.campaigns[x].finished_at.split('-')[2]) === initDate
+        && Number(this.campaigns[x].finished_at.split('-')[0]) === this.yearSelected) {
+        this.campaignsFill.push(this.campaigns[x]);
       }
+
     }
 
     this.campaignsFill.forEach(obj => {
@@ -129,6 +148,13 @@ export class AppComponent implements OnInit {
 
     // console.log('CAMPAÑAS DEL MES', this.campaignsFill);
     this.filtterByCampaign();
+  }
+
+  getMili(date: string) {
+    const one_day = 1000 * 60 * 60 * 24;
+    let milli = 0;
+    milli = new Date(date).getTime() + one_day;
+    return milli;
   }
 
   filtterByCampaign() {
@@ -149,13 +175,13 @@ export class AppComponent implements OnInit {
 
   calcaulateInterceptDateRanges(start1: number, finish1: number, start2: number, finish2: number) {
     const one_day = 1000 * 60 * 60 * 24;
-    start2 = start2 + one_day;      // ******
-    finish2 = finish2 + one_day;    // ******
     let isInRange = false;
     if (start1 !== finish1) {
       for (let i = start1; i <= finish1; i = i + one_day) {
         for (let x = start2; x <= finish2; x = x + one_day) {
           if (x >= start1 && x <= finish1) {
+            isInRange = true;
+          } else if (x === finish1) {
             isInRange = true;
           }
         }
