@@ -165,7 +165,30 @@ export class AppComponent implements OnInit {
       this.campaignsFill.forEach(obj => {
         const initDate2 = new Date(obj.started_at).getTime() + one_day;
         const finishDate2 = new Date(obj.finished_at).getTime() + one_day;
-        const isInrange = this.calcaulateInterceptDateRanges(initDate, finishDate, initDate2, finishDate2);
+        let isInrange = this.calcaulateInterceptDateRanges(initDate, finishDate, initDate2, finishDate2);
+
+
+        /* CASOS ESPECIALES */
+
+        if ((Number(obj.started_at.split('-')[0]) + '-' + Number(obj.started_at.split('-')[1]) + '-' +
+          Number(obj.started_at.split('-')[2])).toString() ===
+          this.yearSelected + '-' + this.monthSelected + '-' + this.firstAndLastDaysArray[x].lastDay) {
+          isInrange = true;
+        } else if ((Number(obj.started_at.split('-')[0]) + '-' + Number(obj.started_at.split('-')[1]) + '-' +
+          Number(obj.started_at.split('-')[2])).toString() ===
+          this.yearSelected + '-' + this.monthSelected + '-' + this.firstAndLastDaysArray[x].firstDay) {
+          isInrange = true;
+        } else if ((Number(obj.finished_at.split('-')[0]) + '-' + Number(obj.finished_at.split('-')[1]) + '-' +
+          Number(obj.finished_at.split('-')[2])).toString() ===
+          this.yearSelected + '-' + this.monthSelected + '-' + this.firstAndLastDaysArray[x].lastDay) {
+          isInrange = true;
+        } else if ((Number(obj.finished_at.split('-')[0]) + '-' + Number(obj.finished_at.split('-')[1]) + '-' +
+          Number(obj.finished_at.split('-')[2])).toString() ===
+          this.yearSelected + '-' + this.monthSelected + '-' + this.firstAndLastDaysArray[x].firstDay) {
+          isInrange = true;
+        }
+
+
         obj.weeks.push(isInrange);
       });
     }
@@ -176,6 +199,7 @@ export class AppComponent implements OnInit {
   calcaulateInterceptDateRanges(start1: number, finish1: number, start2: number, finish2: number) {
     const one_day = 1000 * 60 * 60 * 24;
     let isInRange = false;
+
     if (start1 !== finish1) {
       for (let i = start1; i <= finish1; i = i + one_day) {
         for (let x = start2; x <= finish2; x = x + one_day) {
