@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
       }
     }
     this.objectsInRangeDate(this.totalDaysInsMonth);
-    console.log(this.firstAndLastDaysArray);
+    // console.log(this.firstAndLastDaysArray);
   }
 
   // Determinar los objetos que estan en el mes seleccionado
@@ -111,11 +111,14 @@ export class AppComponent implements OnInit {
     const finishDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + finishDay).getTime();
     // console.log(initDate, finishDate);
     for (let x = 0; x < this.campaigns.length; x++) {
-      const initTemporalDate = new Date(this.campaigns[x].started_at).getTime();
-      const finishTemporalDate = new Date(this.campaigns[x].finished_at).getTime();
-      if (initTemporalDate > initDate && initTemporalDate < finishDate) {
+      const one_day = 1000 * 60 * 60 * 24;
+      const initTemporalDate = new Date(this.campaigns[x].started_at).getTime() + one_day;
+      const finishTemporalDate = new Date(this.campaigns[x].finished_at).getTime() + one_day;
+      if (initTemporalDate >= initDate && initTemporalDate + one_day <= finishDate) {
         this.campaignsFill.push(this.campaigns[x]);
-      } else if (finishTemporalDate > initDate && finishTemporalDate < finishDate) {
+      } else if (finishTemporalDate >= initDate && finishTemporalDate <= finishDate) {
+        this.campaignsFill.push(this.campaigns[x]);
+      } else if (initTemporalDate <= initDate && finishTemporalDate >= finishDate) {
         this.campaignsFill.push(this.campaigns[x]);
       }
     }
@@ -129,12 +132,13 @@ export class AppComponent implements OnInit {
   }
 
   filtterByCampaign() {
+    const one_day = 1000 * 60 * 60 * 24;
     for (let x = 0; x < this.firstAndLastDaysArray.length; x++) {
       const initDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + this.firstAndLastDaysArray[x].firstDay).getTime();
       const finishDate = new Date(this.yearSelected + '-' + this.monthSelected + '-' + this.firstAndLastDaysArray[x].lastDay).getTime();
       this.campaignsFill.forEach(obj => {
-        const initDate2 = new Date(obj.started_at).getTime();
-        const finishDate2 = new Date(obj.finished_at).getTime();
+        const initDate2 = new Date(obj.started_at).getTime() + one_day;
+        const finishDate2 = new Date(obj.finished_at).getTime() + one_day;
         const isInrange = this.calcaulateInterceptDateRanges(initDate, finishDate, initDate2, finishDate2);
         obj.weeks.push(isInrange);
       });
@@ -157,12 +161,9 @@ export class AppComponent implements OnInit {
         }
       }
     } else if (start1 === finish1) {
-
       if (start1 >= start2 && start1 <= finish2) {
         isInRange = true;
       }
-    } else if (finish2 === start1) {
-      window.alert('IGUAL');
     }
     return isInRange;
   }

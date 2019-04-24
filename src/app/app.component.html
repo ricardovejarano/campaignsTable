@@ -13,7 +13,7 @@
   <tr>
     <th>Canal</th>
     <th *ngFor="let w of firstAndLastDaysArray">
-      <div *ngIf="w.firstDay !== w.lastDay">{{w.firstDay}} a {{w.lastDay}}</div>
+      <div *ngIf="w.firstDay !== w.lastDay">{{w.firstDay}} - {{w.lastDay}}</div>
       <div *ngIf="w.firstDay === w.lastDay">{{w.firstDay}}</div>
     </th>
   </tr>
